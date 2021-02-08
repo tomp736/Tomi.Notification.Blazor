@@ -35,7 +35,15 @@ jobs:
       
     - name: PushGithub 1
       run: dotnet nuget push ./Tomi.Notification.Core/bin/Release/*.nupkg --skip-duplicate
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.PUBLISH_TO_GITHUB_COM}}
+        
     - name: PushGithub 2
       run: dotnet nuget push ./Tomi.Notification.AspNetCore/bin/Release/*.nupkg --skip-duplicate
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.PUBLISH_TO_GITHUB_COM}}
+        
     - name: PushGithub 3
       run: dotnet nuget push ./Tomi.Notification.Blazor/bin/Release/*.nupkg --skip-duplicate
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.PUBLISH_TO_GITHUB_COM}}
