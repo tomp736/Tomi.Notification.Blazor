@@ -9,6 +9,7 @@
     <Version>1.0.0-$([System.DateTime]::UtcNow.ToString(yyyyMMdd-HHmmss))</Version>
     <Authors>Tomi</Authors>
     <Company>Tomi</Company>
+    <RepositoryUrl>https://github.com/tomp736/Tomi.Notification.Blazor</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

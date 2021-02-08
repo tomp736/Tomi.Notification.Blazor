@@ -10,6 +10,7 @@
     <Authors>Tomi</Authors>
     <Company>Tomi</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <RepositoryUrl>https://github.com/tomp736/Tomi.Notification.Blazor</RepositoryUrl>
   </PropertyGroup>
   
   <ItemGroup>
