@@ -11,16 +11,5 @@
     <Company>Tomi</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
-
-  <PropertyGroup>
-    <RestoreSources>$(RestoreSources);https://api.nuget.org/v3/index.json;D:/Projects/LocalNuget</RestoreSources>
-  </PropertyGroup>
-
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="dotnet pack &quot;$(ProjectPath)&quot; --no-build&#xD;&#xA;copy bin\$(ConfigurationName)\*.nupkg D:\Projects\LocalNuget" />
-  </Target>
-
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="DEL /S /Q  bin\$(ConfigurationName)\&quot;$(ProjectName)&quot;*.nupkg&#xD;&#xA;DEL /S /Q  D:\Projects\LocalNuget\&quot;$(ProjectName)&quot;*.nupkg" />
-  </Target>
+  
 </Project>
