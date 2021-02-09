@@ -8,6 +8,6 @@ namespace Tomi.Notification.AspNetCore
 {
     public interface INotificationProcessingService
     {
-        Task ProcessUserNotifications(IHubContext<NotificationHub, INotificationClient> hubContext, CancellationToken stoppingToken);
+        Task ProcessNotifications(IHubContext<NotificationHub, INotificationClient> hubContext, CancellationToken stoppingToken);
     }
 }

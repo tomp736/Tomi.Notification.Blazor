@@ -25,18 +25,8 @@ namespace Tomi.Notification.AspNetCore.Services
             using (var scope = _services.CreateScope())
             {
                 var scopedProcessingService = scope.ServiceProvider.GetRequiredService<INotificationProcessingService>();
-                await scopedProcessingService.ProcessUserNotifications(_hubContext, stoppingToken);
+                await scopedProcessingService.ProcessNotifications(_hubContext, stoppingToken);
             }
-        }
-
-        public void NotifyUser(string user, string title, string description, string iconurl)
-        {
-            _hubContext.Clients.Group($"user_{user}").ReceiveNotification(title, description, iconurl);
-        }
-
-        public void NotifyAll(string title, string description, string iconurl)
-        {
-            _hubContext.Clients.All.ReceiveNotification(title, description, iconurl);
         }
     }
 }
