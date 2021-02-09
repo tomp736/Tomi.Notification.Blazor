@@ -7,7 +7,7 @@
   <PropertyGroup>
     <PackageId>Tomi.Notification.Blazor</PackageId>
     <Version>1.0.0-$([System.DateTime]::UtcNow.ToString(yyyyMMdd-HHmmss))</Version>
-    <Authors>Tomi</Authors>
+    <Authors>Thomas Pisula</Authors>
     <Company>Tomi</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <RepositoryUrl>https://github.com/tomp736/Tomi.Notification.Blazor</RepositoryUrl>
