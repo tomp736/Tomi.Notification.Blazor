@@ -28,13 +28,13 @@ namespace Tomi.Notification.Blazor.Services
                 .WithAutomaticReconnect()
                 .Build();
 
-            _hubConnection.On<string, string, string>(nameof(INotificationClient.ReceiveNotification),
+            _hubConnection.On<string, string, string>(nameof(INotificationHubService.ReceiveNotification),
                 async (title, description, iconurl) =>
                 {
                     await _notificationApiInterop.Notify(title, description, iconurl);
                 });
 
-            _hubConnection.On(nameof(INotificationClient.ReceivePermissionRequest),
+            _hubConnection.On(nameof(INotificationHubService.ReceivePermissionRequest),
                 async () =>
                 {
                     await _notificationApiInterop.AskForApproval();

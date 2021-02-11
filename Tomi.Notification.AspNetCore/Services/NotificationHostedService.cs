@@ -11,10 +11,10 @@ namespace Tomi.Notification.AspNetCore.Services
 {
     public class NotificationHostedService : BackgroundService
     {
-        private IHubContext<NotificationHub, INotificationClient> _hubContext;
+        private IHubContext<NotificationHub, INotificationHubService> _hubContext;
         private IServiceProvider _services { get; }
 
-        public NotificationHostedService(IHubContext<NotificationHub, INotificationClient> hubContext, IServiceProvider services)
+        public NotificationHostedService(IHubContext<NotificationHub, INotificationHubService> hubContext, IServiceProvider services)
         {
             _hubContext = hubContext;
             _services = services;

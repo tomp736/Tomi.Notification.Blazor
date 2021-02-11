@@ -7,7 +7,7 @@ using Tomi.Notification.Core;
 namespace Tomi.Notification.AspNetCore.Hubs
 {
     [Authorize]
-    public class NotificationHub : Hub<INotificationClient>
+    public class NotificationHub : Hub<INotificationHubService>
     {
         public async override Task OnConnectedAsync()
         {

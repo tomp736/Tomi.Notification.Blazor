@@ -6,6 +6,6 @@ namespace Tomi.Notification.AspNetCore
 {
     public interface INotificationProcessingServiceDataProvider
     {
-        IEnumerable<INotificationItem> GetNotificationItems(DateTime notificationDateTime);
+        IEnumerable<INotificationHubItem> GetNotificationItems(DateTime notificationDateTime);
     }
 }
