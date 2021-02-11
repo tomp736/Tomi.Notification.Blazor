@@ -24,8 +24,9 @@ namespace Tomi.Notification.AspNetCore.Services
         {
             using (var scope = _services.CreateScope())
             {
-                var scopedProcessingService = scope.ServiceProvider.GetRequiredService<INotificationProcessingService>();
-                await scopedProcessingService.ProcessNotifications(_hubContext, stoppingToken);
+                var notificationProcessingServiceDataProvider = scope.ServiceProvider.GetRequiredService<INotificationProcessingServiceDataProvider>();
+                var notificationProcessingService = scope.ServiceProvider.GetRequiredService<INotificationProcessingService>();
+                await notificationProcessingService.ProcessNotifications(_hubContext, notificationProcessingServiceDataProvider, stoppingToken);
             }
         }
     }
