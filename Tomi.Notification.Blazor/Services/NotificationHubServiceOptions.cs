@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.SignalR.Client;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Threading.Tasks;
 
@@ -14,5 +15,6 @@ namespace Tomi.Notification.Blazor.Services
 
         public Uri Uri { get; set; }
         public Func<Task<string>> AccessTokenProvider { get; set; }
+        public IRetryPolicy RetryPolicy { get; set; }
     }
 }

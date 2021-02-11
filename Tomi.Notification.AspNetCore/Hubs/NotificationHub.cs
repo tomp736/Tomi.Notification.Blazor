@@ -22,10 +22,5 @@ namespace Tomi.Notification.AspNetCore.Hubs
         {
             return base.OnDisconnectedAsync(exception);
         }
-
-        public async void PushNotification(string title, string description, string iconurl)
-        {
-            await Clients.All.ReceiveNotification(title, description, iconurl);
-        }
     }
 }

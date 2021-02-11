@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.JSInterop;
 using System.Threading.Tasks;
+using Tomi.Notification.Core;
 
 namespace Tomi.Notification.Blazor.Services
 {
@@ -24,13 +25,19 @@ namespace Tomi.Notification.Blazor.Services
                 {
                     options.AccessTokenProvider = notificationHubServiceOptions.AccessTokenProvider;
                 })
+                .WithAutomaticReconnect()
                 .Build();
 
-            _hubConnection.On<string, string, string>("ReceiveNotification",
+            _hubConnection.On<string, string, string>(nameof(INotificationClient.ReceiveNotification),
                 async (title, description, iconurl) =>
                 {
-                    _logger.LogInformation($"{title}");
-                    await ShowNotification(title, description, iconurl);
+                    await _notificationApiInterop.Notify(title, description, iconurl);
+                });
+
+            _hubConnection.On(nameof(INotificationClient.ReceivePermissionRequest),
+                async () =>
+                {
+                    await _notificationApiInterop.AskForApproval();
                 });
         }
 
@@ -42,23 +49,6 @@ namespace Tomi.Notification.Blazor.Services
         public async Task Stop()
         {
             await _hubConnection.StopAsync();
-        }
-
-        public async ValueTask<bool> NotificationsAllowed()
-        {
-            _logger.LogInformation("NotificationsAllowed");
-            return await _notificationApiInterop.HasPermissions();
-        }
-
-        public async Task RequestPermission()
-        {
-            _logger.LogInformation("RequestPermission");
-            await _notificationApiInterop.AskForApproval();
-        }
-
-        public async Task ShowNotification(string title, string description, string iconurl)
-        {
-            await _notificationApiInterop.Notify(title, description, iconurl);
         }
     }
 }
